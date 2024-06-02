@@ -49,7 +49,7 @@ services:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
-      - elasticsearch:/usr/share/elasticsearch/data:Z
+      - ./elastic_data:/usr/share/elasticsearch/data:Z
     ports:
       - 9200:9200
       - 9300:9300
@@ -79,6 +79,7 @@ services:
       - 5044:5044
       - 50000:50000/tcp
       - 50000:50000/udp
+      - 12201:12201/udp
       - 9600:9600
     environment:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
